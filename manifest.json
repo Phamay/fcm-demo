@@ -2,7 +2,8 @@
   "short_name": "FCM Demo",
   "name": "Lunzz's fcm demo",
   "gcm_sender_id": "103953800507",
-  "display": "fullscreen",
+  "display": "standalone",
+  "theme_color": "#2196F3",
   "icons": [
     {
       "src": "src/icon-100x100.png",
