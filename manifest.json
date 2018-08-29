@@ -4,19 +4,9 @@
   "gcm_sender_id": "103953800507",
   "icons": [
     {
-      "src": "launcher-icon-1x.png",
+      "src": "icon.png",
       "type": "image/png",
-      "sizes": "48x48"
-    },
-    {
-      "src": "launcher-icon-2x.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "launcher-icon-4x.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "144x144"
     }
   ],
   "start_url": "web.html?launcher=true"
