@@ -4,7 +4,7 @@
   "gcm_sender_id": "103953800507",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "src/icon.png",
       "type": "image/png",
       "sizes": "144x144"
     }
