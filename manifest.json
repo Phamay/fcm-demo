@@ -1,6 +1,7 @@
 {
   "short_name": "FCM Demo",
   "name": "Lunzz's fcm demo",
+  "gcm_sender_id": "322730271585",
   "icons": [
     {
       "src": "launcher-icon-1x.png",
