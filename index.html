@@ -27,7 +27,7 @@
 
   const messaging = firebase.messaging();
   messaging.usePublicVapidKey('BAi6xDCDHTcEPhSek-z4IaFqqvd0F9uv7ohKEggU7J3U23BpHglIFvSoRPVuLGcVPXDNPpa3WEDV1Qm1CeZtMME');
-
+/*
   messaging.requestPermission().then(function() {
     console.log('Notification permission granted.');
     // TODO(developer): Retrieve an Instance ID token for use with FCM.
@@ -52,7 +52,7 @@
   }).catch(function(err) {
     console.log('Unable to get permission to notify.', err);
   });
-/*
+
 
   // watch refresh token
   messaging.onTokenRefresh(function() {
