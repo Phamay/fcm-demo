@@ -4,11 +4,24 @@
     <meta charset="utf-8">
     <title>FCM WEB Demo</title>
     <link rel="manifest" href="manifest.json">
+    <style type="text/css">
+        #showToken{
+            word-break: break-all;
+            font-size: 14px;
+            width: 95%;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 
     <div style="margin: 20px auto;text-align: center;font-size: 24px;">
         A Simple FCM Demo
+        <hr>
+        <p>Token</p>
+        <p id="showToken">loading...</p>
+        <hr>
+        <button onclick="deleteToken()">DELETE TOKEN</button>
     </div>
 
 </body>
@@ -30,20 +43,40 @@ firebase.initializeApp(config);
 const messaging = firebase.messaging();
 
 messaging.usePublicVapidKey('BAi6xDCDHTcEPhSek-z4IaFqqvd0F9uv7ohKEggU7J3U23BpHglIFvSoRPVuLGcVPXDNPpa3WEDV1Qm1CeZtMME');
-messaging.requestPermission().then(function() {
-    console.log('Get permission.');
+getToken()
 
-    return messaging.getToken();
-
-}).then(function(curtoken){
-    console.log('Token: ' + curtoken)
-}).catch(function(err) {
-    console.log('Unable to get permission to notify.', err);
-});
 
 messaging.onMessage(function(payload) {
     console.log('Message received.front. ', payload);
 });
 
+function getToken(){
+    messaging.requestPermission().then(function() {
+        console.log('Get permission.');
 
+        return messaging.getToken();
+
+    }).then(function(curtoken){
+        console.log('Token: ' + curtoken)
+        document.querySelector('#showToken').textContent = curtoken
+    }).catch(function(err) {
+        console.log('Unable to get permission to notify.', err);
+    });
+}
+
+function deleteToken(){
+    messaging.getToken().then(function(currentToken) {
+        messaging.deleteToken(currentToken).then(function() {
+            console.log('Token deleted.');
+            document.querySelector('#showToken').textContent = 'loading...'
+            
+            getToken()
+        }).catch(function(err) {
+            console.log('Unable to delete token. ', err);
+        });
+        
+    }).catch(function(err) {
+        console.log('Error retrieving Instance ID token. ', err);
+    });
+}
 </script>
