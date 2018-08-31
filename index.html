@@ -41,6 +41,7 @@
           console.log(token)
           console.log(user)
          
+         var credential = firebase.auth.GithubAuthProvider.credential(token);
          firebase.auth().signInWithCredential(credential).then(function(ret){
           console,log('ret: ' + ret)
          }).catch(function(error) {
