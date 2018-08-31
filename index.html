@@ -16,8 +16,8 @@
 
 </body>
 </html>
-<!--<script src="firebase.js"></script>-->
-<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+<script src="firebase.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script> -->
 <script>
   // Initialize Firebase
   var config = {
@@ -45,6 +45,19 @@
          var credential = firebase.auth.GithubAuthProvider.credential(token);
          firebase.auth().signInAndRetrieveDataWithCredential(credential).catch(function(error) {
           console.log('firebase auth faild: ' + error)
+        });
+
+         const messaging = firebase.messaging();
+         messaging.usePublicVapidKey('BAi6xDCDHTcEPhSek-z4IaFqqvd0F9uv7ohKEggU7J3U23BpHglIFvSoRPVuLGcVPXDNPpa3WEDV1Qm1CeZtMME');
+         messaging.requestPermission().then(function() {
+          console.log('Get permission.');
+          
+          return messaging.getToken();
+          
+        }).then(function(curtoken){
+          console.log(curtoken)
+        }).catch(function(err) {
+          console.log('Unable to get permission to notify.', err);
         });
        }).catch(function(error) {
           var errorCode = error.code;
